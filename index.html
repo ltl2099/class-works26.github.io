@@ -22,20 +22,20 @@
         <!-- 班级事务看板 -->
         <section id="kanban-section" class="content-section active">
             <div class="kanban-board">
-                <div class="kanban-column" id="todo" ondragover="event.preventDefault()" ondrop="drop(event)">
+                <div class="kanban-column" id="todo" ondragover="event.preventDefault()" ondrop="app.drop(event)">
                     <h3><i class="fa-solid fa-list-check"></i> 待办 (To-Do)</h3>
                     <div class="tasks" id="todo-tasks"></div>
-                    <button class="add-task-btn"><i class="fa-solid fa-plus"></i> 添加新任务</button>
+                    <button class="add-task-btn" onclick="app.openTaskModal()"><i class="fa-solid fa-plus"></i> 添加新任务</button>
                 </div>
-                <div class="kanban-column" id="inprogress" ondragover="event.preventDefault()" ondrop="drop(event)">
+                <div class="kanban-column" id="inprogress" ondragover="event.preventDefault()" ondrop="app.drop(event)">
                     <h3><i class="fa-solid fa-person-running"></i> 进行中 (In Progress)</h3>
                     <div class="tasks" id="inprogress-tasks"></div>
                 </div>
-                <div class="kanban-column" id="done" ondragover="event.preventDefault()" ondrop="drop(event)">
+                <div class="kanban-column" id="done" ondragover="event.preventDefault()" ondrop="app.drop(event)">
                     <h3><i class="fa-solid fa-check-circle"></i> 已完成 (Done)</h3>
                     <div class="tasks" id="done-tasks"></div>
                 </div>
-                <div class="kanban-column" id="cancelled" ondragover="event.preventDefault()" ondrop="drop(event)">
+                <div class="kanban-column" id="cancelled" ondragover="event.preventDefault()" ondrop="app.drop(event)">
                     <h3><i class="fa-solid fa-times-circle"></i> 已取消/搁置</h3>
                     <div class="tasks" id="cancelled-tasks"></div>
                 </div>
@@ -44,8 +44,10 @@
 
         <!-- 班委工作日志 -->
         <section id="log-section" class="content-section">
-            <h2><i class="fa-solid fa-book"></i> 班委工作日志</h2>
-            <button id="add-log-btn" class="add-btn"><i class="fa-solid fa-plus"></i> 添加日志记录</button>
+            <div class="section-header">
+                <h2><i class="fa-solid fa-book"></i> 班委工作日志</h2>
+                <button id="add-log-btn" class="add-btn"><i class="fa-solid fa-plus"></i> 添加日志记录</button>
+            </div>
             <div class="table-container">
                 <table id="log-table">
                     <thead>
@@ -94,12 +96,14 @@
                         <li><span class="score-yellow">特殊贡献:</span> 如有重大贡献，需两位以上班委确认后记录，并详细注明事由。</li>
                     </ul>
                 </div>
-
-                <h2><i class="fa-solid fa-star"></i> 班级积分记录</h2>
-                <div class="points-header">
-                    <button id="add-point-btn" class="add-btn"><i class="fa-solid fa-plus"></i> 添加积分记录</button>
-                    <div class="total-points">
-                        班级当前总积分: <span id="total-points-display">0</span>
+                
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-star"></i> 班级积分记录</h2>
+                    <div class="points-header">
+                         <div class="total-points">
+                            班级当前总积分: <span id="total-points-display">0</span>
+                        </div>
+                        <button id="add-point-btn" class="add-btn"><i class="fa-solid fa-plus"></i> 添加积分记录</button>
                     </div>
                 </div>
                 <div class="table-container">
