@@ -1,0 +1,388 @@
+/* --- 全局与主题 --- */
+:root {
+    --primary-color: #4CAF50; /* 清新薄荷绿 */
+    --secondary-color: #2E7D32; /* 森林绿 */
+    --background-color: #E8F5E9;
+    --card-background: #FFFFFF;
+    --text-color: #333;
+    --border-color: #ddd;
+    --priority-high: #FFCDD2; /* 红色 */
+    --priority-medium: #FFF9C4; /* 黄色 */
+    --priority-low: #C8E6C9; /* 绿色 */
+    --shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- 头部与导航 --- */
+header {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header h1 .fa-leaf {
+    margin-right: 10px;
+    color: #a5d6a7;
+}
+
+nav button {
+    background: none;
+    border: 2px solid transparent;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+nav button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+nav button.active {
+    background-color: var(--primary-color);
+    border-color: #fff;
+}
+
+/* --- 内容区域 --- */
+main {
+    padding: 2rem;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* --- 看板 --- */
+.kanban-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.kanban-column {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 70vh;
+}
+
+.kanban-column h3 {
+    text-align: center;
+    margin-top: 0;
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+.tasks {
+    min-height: 60vh;
+    padding: 5px;
+}
+
+.task-card {
+    background-color: var(--card-background);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    cursor: grab;
+    border-left: 5px solid;
+}
+
+.task-card.priority-high { border-left-color: #e57373; }
+.task-card.priority-medium { border-left-color: #ffd54f; }
+.task-card.priority-low { border-left-color: #81c784; }
+
+.task-card:active {
+    cursor: grabbing;
+    background-color: #f0f0f0;
+}
+
+.task-card p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+.task-card p strong {
+    font-weight: bold;
+}
+
+.add-task-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+.add-task-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* --- 表格通用样式 --- */
+.table-container {
+    overflow-x: auto;
+    background-color: var(--card-background);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+th, td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+th {
+    background-color: #f2f2f2;
+    color: var(--secondary-color);
+}
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tbody tr:hover {
+    background-color: var(--background-color);
+}
+.action-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin: 0 5px;
+}
+.edit-btn { color: var(--primary-color); }
+.delete-btn { color: #e57373; }
+
+.add-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s;
+}
+.add-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* --- 设置与积分 --- */
+#settings-section h2 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+.settings-card {
+    background: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+}
+#password-gate, #settings-content {
+    max-width: 800px;
+    margin: auto;
+}
+#password-gate h2 { text-align: center; }
+#password-gate p { text-align: center; }
+#password-gate input, #password-gate button {
+    display: block;
+    width: 80%;
+    max-width: 300px;
+    margin: 1rem auto;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+#password-gate button {
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+}
+
+.settings-card input {
+    display: block;
+    width: 95%;
+    max-width: 400px;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+.settings-card button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.rules ul { list-style: none; padding: 0; }
+.rules li { margin-bottom: 0.5rem; }
+.rules .score-green { color: var(--secondary-color); font-weight: bold; }
+.rules .score-blue { color: #1976D2; font-weight: bold; }
+.rules .score-red { color: #D32F2F; font-weight: bold; }
+.rules .score-yellow { color: #FBC02D; font-weight: bold; }
+
+.points-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.total-points {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    background: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+
+.feedback {
+    margin-top: 10px;
+    font-weight: bold;
+    min-height: 20px;
+}
+.feedback.success { color: var(--secondary-color); }
+.feedback.error { color: #D32F2F; }
+
+/* --- 模态框 --- */
+.modal-container {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 25px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    animation: slide-down 0.4s ease-out;
+}
+
+@keyframes slide-down {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close-btn:hover { color: black; }
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+}
+.modal-form label {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+.modal-form input, 
+.modal-form select, 
+.modal-form textarea {
+    width: 100%;
+    padding: 0.7rem;
+    margin-top: 0.3rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.modal-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+.modal-form button {
+    margin-top: 1.5rem;
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+/* --- 响应式设计 --- */
+@media (max-width: 1200px) {
+    .kanban-board {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    nav {
+        margin-top: 1rem;
+    }
+    nav button {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+    }
+    .kanban-board {
+        grid-template-columns: 1fr;
+    }
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+}
